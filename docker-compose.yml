@@ -12,7 +12,7 @@ services:
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
     volumes:
-      - ./postgres-order:/data/postgres
+      - postgres-order-data:/var/lib/postgresql/data
     expose:
       - "5431"
     ports:
@@ -29,7 +29,7 @@ services:
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
     volumes:
-      - ./postgres-inventory:/data/postgres
+      - postgres-inventory-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     restart: always
@@ -44,7 +44,7 @@ services:
     expose:
       - "27017"
     volumes:
-      - ./mongo-data:/data/db
+      - mongo-data:/data/db
 
 
   ## Eureka Server
@@ -111,7 +111,12 @@ services:
     depends_on:
       - discovery-server
 
-
 volumes:
-  db:
+  mongo-data:
+    driver: local
+  postgres-inventory-data:
+    driver: local
+  postgres-order-data:
+    driver: local
+
 
