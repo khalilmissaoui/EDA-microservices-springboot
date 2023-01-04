@@ -1,6 +1,9 @@
 package com.microservicestocksystem.productservice.controller;
 
 
+import com.microservicestocksystem.productservice.dto.ProductRequest;
+import com.microservicestocksystem.productservice.dto.ProductResponse;
+import com.microservicestocksystem.productservice.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -12,17 +15,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductController {
 
+    private final ProductService productService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public String createProduct() {
-        return "product is created";
+    public void createProduct(@RequestBody ProductRequest productRequest) {
+        productService.createProduct(productRequest);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public String getAllProducts() {
-        return "here is the list of products";
+    public List<ProductResponse> getAllProducts() {
+        return productService.getAllProducts();
     }
 
 }
