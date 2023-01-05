@@ -11,8 +11,7 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
-    volumes:
-      - postgres-order-data:/var/lib/postgresql/data
+
     expose:
       - "5431"
     ports:
@@ -28,10 +27,13 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
-    volumes:
-      - postgres-inventory-data:/var/lib/postgresql/data
+
     ports:
       - "5432:5432"
+    command: -p 5432
+    expose:
+      - "5432"
+
     restart: always
 
   ## Mongo Docker Compose Config
@@ -100,6 +102,8 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
       - discovery-server
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   ## Inventory-Service Docker Compose Config
   inventory-service:
@@ -110,13 +114,12 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
       - discovery-server
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 volumes:
   mongo-data:
     driver: local
-  postgres-inventory-data:
-    driver: local
-  postgres-order-data:
-    driver: local
+
 
 

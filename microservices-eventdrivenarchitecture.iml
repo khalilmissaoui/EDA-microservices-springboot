@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/mongo-data" />
+      <excludeFolder url="file://$MODULE_DIR$/postgres-inventory" />
+      <excludeFolder url="file://$MODULE_DIR$/postgres-order" />
+    </content>
+  </component>
+</module>
