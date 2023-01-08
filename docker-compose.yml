@@ -12,6 +12,9 @@ services:
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
 
+    volumes:
+      - postgres-order:/var/lib/postgresql/data
+
     expose:
       - "5431"
     ports:
@@ -27,7 +30,8 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
-
+    volumes:
+      - postgres-inventory:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     command: -p 5432
@@ -119,6 +123,10 @@ services:
 
 volumes:
   mongo-data:
+    driver: local
+  postgres-inventory:
+    driver: local
+  postgres-order:
     driver: local
 
 
