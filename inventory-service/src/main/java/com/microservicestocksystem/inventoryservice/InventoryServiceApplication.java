@@ -8,10 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EntityScan("com.microservicestocksystem.entity")
+@EnableJpaRepositories(basePackages = { "com.microservicestocksystem.inventoryservice.repository" })
+@EntityScan(basePackages = { "com.microservicestocksystem.inventoryservice.model" })
 public class InventoryServiceApplication {
 
 	public static void main(String[] args) {
