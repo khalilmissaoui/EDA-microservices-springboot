@@ -1,7 +1,14 @@
 version: '3.7'
 services:
 
-
+  ## MONITORING
+  ## Zipkin
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+  ## DATABASES
   ## MySQL Docker : For Service Order &  Service Inventory
   postgres-order:
     container_name: postgres-order
@@ -14,7 +21,6 @@ services:
 
     volumes:
       - postgres-order:/var/lib/postgresql/data
-
     expose:
       - "5431"
     ports:
@@ -52,7 +58,7 @@ services:
     volumes:
       - mongo-data:/data/db
 
-
+  ## CLOUD MICROSERVICES SPRING
   ## Eureka Server
   discovery-server:
     image: khalilmissaoui/discovery-service
@@ -62,6 +68,8 @@ services:
       - .m2:/root/.m2
     ports:
       - "8761:8761"
+    depends_on:
+      - zipkin
     environment:
       - SPRING_PROFILES_ACTIVE=docker
 
@@ -84,8 +92,9 @@ services:
       - product-service
       - order-service
       - inventory-service
+      - zipkin
 
-
+  ## SERVICES
   ## Product-Service Docker Compose Config
   product-service:
     container_name: product-service
@@ -95,6 +104,7 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
       - discovery-server
+      - zipkin
 
 
   ## Order-Service Docker Compose Config
@@ -106,6 +116,7 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
       - discovery-server
+      - zipkin
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
@@ -118,6 +129,7 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
       - discovery-server
+      - zipkin
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
