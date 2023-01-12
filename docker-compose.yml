@@ -105,6 +105,8 @@ services:
     depends_on:
       - discovery-server
       - zipkin
+      - mongo
+
 
 
   ## Order-Service Docker Compose Config
@@ -117,6 +119,8 @@ services:
     depends_on:
       - discovery-server
       - zipkin
+      - postgres-order
+
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
@@ -130,6 +134,8 @@ services:
     depends_on:
       - discovery-server
       - zipkin
+      - postgres-inventory
+
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
