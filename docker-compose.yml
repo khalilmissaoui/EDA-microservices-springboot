@@ -95,6 +95,7 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
       - discovery-server
+      - mongo
 
 
   ## Order-Service Docker Compose Config
@@ -106,6 +107,7 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
       - discovery-server
+      - postgres-order
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
@@ -118,6 +120,7 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
       - discovery-server
+      - postgres-inventory
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
