@@ -1,7 +1,7 @@
-/home/khalil/Documents/microservices-eventdrivenarchitecture/product-service/src/main/java/com/microservicestocksystem/productservice/repository/ProductRepository.java
-/home/khalil/Documents/microservices-eventdrivenarchitecture/product-service/src/main/java/com/microservicestocksystem/productservice/model/Product.java
-/home/khalil/Documents/microservices-eventdrivenarchitecture/product-service/src/main/java/com/microservicestocksystem/productservice/ProductServiceApplication.java
-/home/khalil/Documents/microservices-eventdrivenarchitecture/product-service/src/main/java/com/microservicestocksystem/productservice/controller/ProductController.java
-/home/khalil/Documents/microservices-eventdrivenarchitecture/product-service/src/main/java/com/microservicestocksystem/productservice/service/ProductService.java
-/home/khalil/Documents/microservices-eventdrivenarchitecture/product-service/src/main/java/com/microservicestocksystem/productservice/dto/ProductResponse.java
-/home/khalil/Documents/microservices-eventdrivenarchitecture/product-service/src/main/java/com/microservicestocksystem/productservice/dto/ProductRequest.java
+C:\Users\khali\Desktop\micro-event-spring\EDA-microservices-springboot\product-service\src\main\java\com\microservicestocksystem\productservice\dto\ProductRequest.java
+C:\Users\khali\Desktop\micro-event-spring\EDA-microservices-springboot\product-service\src\main\java\com\microservicestocksystem\productservice\model\Product.java
+C:\Users\khali\Desktop\micro-event-spring\EDA-microservices-springboot\product-service\src\main\java\com\microservicestocksystem\productservice\dto\ProductResponse.java
+C:\Users\khali\Desktop\micro-event-spring\EDA-microservices-springboot\product-service\src\main\java\com\microservicestocksystem\productservice\controller\ProductController.java
+C:\Users\khali\Desktop\micro-event-spring\EDA-microservices-springboot\product-service\src\main\java\com\microservicestocksystem\productservice\repository\ProductRepository.java
+C:\Users\khali\Desktop\micro-event-spring\EDA-microservices-springboot\product-service\src\main\java\com\microservicestocksystem\productservice\ProductServiceApplication.java
+C:\Users\khali\Desktop\micro-event-spring\EDA-microservices-springboot\product-service\src\main\java\com\microservicestocksystem\productservice\service\ProductService.java

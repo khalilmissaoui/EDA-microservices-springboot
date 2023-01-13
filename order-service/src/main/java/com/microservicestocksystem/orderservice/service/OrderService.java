@@ -43,10 +43,7 @@ public class OrderService {
                 .map(OrderLineItems::getSkuCode)
                 .toList();
 
-        Span inventoryServiceLookup = tracer.nextSpan().name("InventoryServiceLookup");
-        try (Tracer.SpanInScope isLookup = tracer.withSpanInScope(inventoryServiceLookup.start())) {
 
-            inventoryServiceLookup.tag("call", "inventory-service");
             // Call Inventory Service, and place order if product is in
             // stock
             InventoryResponse[] inventoryResponsArray = webClientBuilder.build().get()
@@ -65,9 +62,7 @@ public class OrderService {
             } else {
                 throw new IllegalArgumentException("Product is not in stock, please try again later");
             }
-        } finally {
-            inventoryServiceLookup.flush();
-        }
+
     }
 
     private OrderLineItems mapToDto(OrderLineItemsDto orderLineItemsDto) {
