@@ -153,6 +153,18 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
+    ## Notification-Service Docker Compose Config
+  notification-service:
+      container_name: notification-service
+      image: khalilmissaoui/notification-service
+      environment:
+        - SPRING_PROFILES_ACTIVE=docker
+      depends_on:
+        - zipkin
+        - broker
+        - discovery-server
+        - api-gateway
+
   ## Inventory-Service Docker Compose Config
   inventory-service:
     container_name: inventory-service
