@@ -162,6 +162,7 @@ services:
       depends_on:
         - zipkin
         - broker
+        - order-service
         - discovery-server
         - api-gateway
 
