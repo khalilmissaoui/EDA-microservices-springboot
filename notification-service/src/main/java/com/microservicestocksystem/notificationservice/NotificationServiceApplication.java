@@ -15,10 +15,4 @@ public class NotificationServiceApplication {
     }
 
 
-    @KafkaListener(topics = "notificationTopic")
-    public void handleNotification(OrderPlacedEvent orderPlacedEvent) {
-        // add logic to react based on the event result later ...
-        log.info("Received Notification for Order - {}", orderPlacedEvent.getOrderNumber());
-    }
-
 }
