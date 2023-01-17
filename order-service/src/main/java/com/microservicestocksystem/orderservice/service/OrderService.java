@@ -6,6 +6,7 @@ import com.microservicestocksystem.orderservice.dto.InventoryResponse;
 import com.microservicestocksystem.orderservice.dto.OrderLineItemsDto;
 import com.microservicestocksystem.orderservice.dto.OrderRequest;
 import com.microservicestocksystem.orderservice.event.OrderPlacedEvent;
+import com.microservicestocksystem.orderservice.kafka.OrderProducer;
 import com.microservicestocksystem.orderservice.model.Order;
 import com.microservicestocksystem.orderservice.model.OrderLineItems;
 import com.microservicestocksystem.orderservice.repository.OrderRepository;
@@ -29,8 +30,8 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final WebClient.Builder webClientBuilder;
     private final Tracer tracer;
-    private final KafkaTemplate<String, OrderPlacedEvent> kafkaTemplate;
 
+    private OrderProducer orderProducer;
 
     public String placeOrder(OrderRequest orderRequest) {
         Order order = new Order();
@@ -62,13 +63,12 @@ public class OrderService {
 
             boolean allProductsInStock = Arrays.stream(inventoryResponsArray)
                     .allMatch(InventoryResponse::isInStock);
-
             if (allProductsInStock) {
                 orderRepository.save(order);
-                kafkaTemplate.send("notificationTopic", new OrderPlacedEvent(order.getOrderNumber() , OrderPlacedEvent.OrderState.SUCCESS));
+                orderProducer.sendMessage(new OrderPlacedEvent(order.getOrderNumber() , OrderPlacedEvent.OrderState.SUCCESS));
                 return "Order Placed Successfully";
             } else {
-                kafkaTemplate.send("notificationTopic", new OrderPlacedEvent(order.getOrderNumber() , OrderPlacedEvent.OrderState.FAILURE));
+                orderProducer.sendMessage(new OrderPlacedEvent(order.getOrderNumber() , OrderPlacedEvent.OrderState.FAILURE));
                 throw new IllegalArgumentException("Product is not in stock, please try again later");
             }
         } finally {

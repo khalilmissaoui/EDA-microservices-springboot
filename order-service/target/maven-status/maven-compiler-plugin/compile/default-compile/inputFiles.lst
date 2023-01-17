@@ -1,0 +1,11 @@
+C:\Users\khali\Desktop\micro-event-spring\EDA-microservices-springboot\order-service\src\main\java\com\microservicestocksystem\orderservice\controller\OrderController.java
+C:\Users\khali\Desktop\micro-event-spring\EDA-microservices-springboot\order-service\src\main\java\com\microservicestocksystem\orderservice\dto\InventoryResponse.java
+C:\Users\khali\Desktop\micro-event-spring\EDA-microservices-springboot\order-service\src\main\java\com\microservicestocksystem\orderservice\event\OrderPlacedEvent.java
+C:\Users\khali\Desktop\micro-event-spring\EDA-microservices-springboot\order-service\src\main\java\com\microservicestocksystem\orderservice\dto\OrderLineItemsDto.java
+C:\Users\khali\Desktop\micro-event-spring\EDA-microservices-springboot\order-service\src\main\java\com\microservicestocksystem\orderservice\OrderServiceApplication.java
+C:\Users\khali\Desktop\micro-event-spring\EDA-microservices-springboot\order-service\src\main\java\com\microservicestocksystem\orderservice\dto\OrderRequest.java
+C:\Users\khali\Desktop\micro-event-spring\EDA-microservices-springboot\order-service\src\main\java\com\microservicestocksystem\orderservice\repository\OrderRepository.java
+C:\Users\khali\Desktop\micro-event-spring\EDA-microservices-springboot\order-service\src\main\java\com\microservicestocksystem\orderservice\model\Order.java
+C:\Users\khali\Desktop\micro-event-spring\EDA-microservices-springboot\order-service\src\main\java\com\microservicestocksystem\orderservice\model\OrderLineItems.java
+C:\Users\khali\Desktop\micro-event-spring\EDA-microservices-springboot\order-service\src\main\java\com\microservicestocksystem\orderservice\service\OrderService.java
+C:\Users\khali\Desktop\micro-event-spring\EDA-microservices-springboot\order-service\src\main\java\com\microservicestocksystem\orderservice\config\WebClientConfig.java
